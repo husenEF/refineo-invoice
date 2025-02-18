@@ -8,6 +8,10 @@ const filePath = path.join(process.cwd(), "src/data/invoices.json");
 
 // Function to read data from file
 const readData = (): Invoice[] => {
+  if (!fs.existsSync(filePath)) {
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.writeFileSync(filePath, JSON.stringify([]), "utf-8");
+  }
   const fileContent = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(fileContent);
 };

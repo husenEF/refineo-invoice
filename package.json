@@ -6,13 +6,14 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
     "build": "refine build",
-    "start": "refine start",
+    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
+    "format": "prettier --write .",
     "lint": "next lint",
-    "refine": "refine",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write ."
+    "prepare": "husky",
+    "refine": "refine",
+    "start": "refine start"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -49,6 +50,8 @@
     "eslint-config-next": "^14.2.24",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "prettier": "^3.5.1",
     "typescript": "^5.4.2"
   },
