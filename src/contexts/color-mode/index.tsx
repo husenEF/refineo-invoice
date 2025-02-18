@@ -6,21 +6,14 @@ import { ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { RefineThemes } from "@refinedev/mui";
 import Cookies from "js-cookie";
-import React, {
-  type PropsWithChildren,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { type PropsWithChildren, createContext, useEffect, useState } from "react";
 
 type ColorModeContextType = {
   mode: string;
   setMode: () => void;
 };
 
-export const ColorModeContext = createContext<ColorModeContextType>(
-  {} as ColorModeContextType
-);
+export const ColorModeContext = createContext<ColorModeContextType>({} as ColorModeContextType);
 
 type ColorModeContextProviderProps = {
   defaultMode?: string;

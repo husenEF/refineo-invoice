@@ -2,12 +2,7 @@
 
 import { Stack, Typography } from "@mui/material";
 import { useOne, useShow } from "@refinedev/core";
-import {
-  DateField,
-  MarkdownField,
-  Show,
-  TextFieldComponent as TextField,
-} from "@refinedev/mui";
+import { DateField, MarkdownField, Show, TextFieldComponent as TextField } from "@refinedev/mui";
 
 export default function BlogPostShow() {
   const { query } = useShow({});
