@@ -1,10 +1,7 @@
 import { DevtoolsProvider } from "@providers/devtools";
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import {
-  RefineSnackbarProvider,
-  useNotificationProvider,
-} from "@refinedev/mui";
+import { RefineSnackbarProvider, useNotificationProvider } from "@refinedev/mui";
 import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -44,19 +41,19 @@ export default function RootLayout({
                     notificationProvider={useNotificationProvider}
                     resources={[
                       {
-                        name:'invoices',
-                        list:'/invoices',
-                        meta:{
-                          canDelete:true
-                        }
+                        name: "invoices",
+                        list: "/invoices",
+                        meta: {
+                          canDelete: true,
+                        },
                       },
                       {
-                        name:'add_invoices',
-                        list:'/invoices/add',
-                        meta:{
-                          canCreate:true
-                        }
-                      }
+                        name: "add_invoices",
+                        list: "/invoices/add",
+                        meta: {
+                          canCreate: true,
+                        },
+                      },
                       // {
                       //   name: "blog_posts",
                       //   list: "/blog-posts",

@@ -21,11 +21,7 @@ export default function BlogPostCreate() {
 
   return (
     <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
-      <Box
-        component="form"
-        sx={{ display: "flex", flexDirection: "column" }}
-        autoComplete="off"
-      >
+      <Box component="form" sx={{ display: "flex", flexDirection: "column" }} autoComplete="off">
         <TextField
           {...register("title", {
             required: "This field is required",
@@ -69,9 +65,7 @@ export default function BlogPostCreate() {
                 return (
                   categoryAutocompleteProps?.options?.find((p) => {
                     const itemId =
-                      typeof item === "object"
-                        ? item?.id?.toString()
-                        : item?.toString();
+                      typeof item === "object" ? item?.id?.toString() : item?.toString();
                     const pId = p?.id?.toString();
                     return itemId === pId;
                   })?.title ?? ""
@@ -80,9 +74,7 @@ export default function BlogPostCreate() {
               isOptionEqualToValue={(option, value) => {
                 const optionId = option?.id?.toString();
                 const valueId =
-                  typeof value === "object"
-                    ? value?.id?.toString()
-                    : value?.toString();
+                  typeof value === "object" ? value?.id?.toString() : value?.toString();
                 return value === undefined || optionId === valueId;
               }}
               renderInput={(params) => (
@@ -104,11 +96,7 @@ export default function BlogPostCreate() {
           control={control}
           render={({ field }) => {
             return (
-              <Select
-                {...field}
-                value={field?.value || "draft"}
-                label={"Status"}
-              >
+              <Select {...field} value={field?.value || "draft"} label={"Status"}>
                 <MenuItem value="draft">Draft</MenuItem>
                 <MenuItem value="published">Published</MenuItem>
                 <MenuItem value="rejected">Rejected</MenuItem>

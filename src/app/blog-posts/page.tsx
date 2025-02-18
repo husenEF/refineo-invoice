@@ -3,14 +3,7 @@
 import { Typography } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { useMany } from "@refinedev/core";
-import {
-  DateField,
-  DeleteButton,
-  EditButton,
-  List,
-  ShowButton,
-  useDataGrid,
-} from "@refinedev/mui";
+import { DateField, DeleteButton, EditButton, List, ShowButton, useDataGrid } from "@refinedev/mui";
 import React from "react";
 
 export default function BlogPostList() {
@@ -20,10 +13,7 @@ export default function BlogPostList() {
 
   const { data: categoryData, isLoading: categoryIsLoading } = useMany({
     resource: "categories",
-    ids:
-      dataGridProps?.rows
-        ?.map((item: any) => item?.category?.id)
-        .filter(Boolean) ?? [],
+    ids: dataGridProps?.rows?.map((item: any) => item?.category?.id).filter(Boolean) ?? [],
     queryOptions: {
       enabled: !!dataGridProps?.rows,
     },
@@ -55,12 +45,7 @@ export default function BlogPostList() {
         renderCell: function render({ value }) {
           if (!value) return "-";
           return (
-            <Typography
-              component="p"
-              whiteSpace="pre"
-              overflow="hidden"
-              textOverflow="ellipsis"
-            >
+            <Typography component="p" whiteSpace="pre" overflow="hidden" textOverflow="ellipsis">
               {value}
             </Typography>
           );
