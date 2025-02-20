@@ -17,9 +17,9 @@ import {
 import { Delete, Edit } from "@mui/icons-material";
 import PageTitle from "@components/layouts/page-title";
 import { useDataGrid } from "@refinedev/mui";
-import { Invoice } from "@libs/interfaces/invoice";
+import { IAddInvoice } from "@libs/interfaces/invoice";
 import { Nullable } from "@libs/interfaces/nullable";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import CustomDataGrid from "@components/custom-data-grid";
 import { formatDate, formatMoney } from "@helpers/string";
 
@@ -27,20 +27,21 @@ const statuses = ["All Status", "Paid", "Unpaid", "Pending"];
 
 export default function InvoiceList() {
   const { mutate: deleteInvoice } = useDelete();
-  const [next, setNext] = useState<string | undefined>(undefined);
+  const [next] = useState<string | undefined>(undefined);
   const [searchData, setSearch] = useState("");
   const [status, setStatus] = useState("All Status");
 
-  const handleDelete = (id: string) => {
-    deleteInvoice({ resource: "invoices", id });
-  };
+  const handleDelete = useCallback(
+    (id: string) => {
+      deleteInvoice({ resource: "invoices", id });
+    },
+    [deleteInvoice]
+  ); // Add deleteInvoice as a dependency
 
   const {
     dataGridProps,
-    filters,
-    search,
-    tableQuery: { isLoading, data },
-  } = useDataGrid<Invoice, HttpError, Nullable<Invoice>>({
+    tableQuery: { isLoading },
+  } = useDataGrid<IAddInvoice, HttpError, Nullable<IAddInvoice>>({
     initialPageSize: 10,
     metaData: {
       cursor: {
@@ -49,7 +50,7 @@ export default function InvoiceList() {
     },
   });
 
-  const columns = useMemo<GridColDef<Invoice>[]>(() => {
+  const columns = useMemo<GridColDef<IAddInvoice>[]>(() => {
     return [
       {
         field: "name",
@@ -77,7 +78,14 @@ export default function InvoiceList() {
         headerName: "Status",
         width: 120,
 
-        renderCell: ({ value }) => (
+        /*************  ✨ Codeium Command ⭐  *************/
+        /**
+         * Renders a Chip component based on the status value.
+         * - Paid: green
+         * - Unpaid: red
+         * - Pending: yellow
+         */
+        /******  d2b43c79-76be-4208-8dd0-783f6b525171  *******/ renderCell: ({ value }) => (
           <Chip
             variant="outlined"
             label={value}

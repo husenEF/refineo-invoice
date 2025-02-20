@@ -11,7 +11,6 @@ import { PostAdd, FormatListBulleted } from "@mui/icons-material";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 import LogoIcon from "@components/icons/logo-icon";
-import { ThemedTitleV2 } from "@refinedev/mui";
 
 const drawerWidth = 240;
 
@@ -41,7 +40,7 @@ export const CustomSidebar = () => {
             textAlign: "center",
             width: "100%",
           }}
-          weight={700}
+          fontWeight={"bold"}
         >
           InvoiceHub
         </Typography>

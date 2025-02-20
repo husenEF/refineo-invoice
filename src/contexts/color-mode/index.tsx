@@ -4,10 +4,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { RefineThemes } from "@refinedev/mui";
 import Cookies from "js-cookie";
 import React, { type PropsWithChildren, createContext, useEffect, useState } from "react";
-import { darkTheme, lightTheme } from "@theme";
+import { lightTheme } from "@theme";
 
 type ColorModeContextType = {
   mode: string;

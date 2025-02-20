@@ -66,10 +66,5 @@ export const lightTheme: any = createTheme({
       default: "#F1F5F9",
       paper: "#ffffff",
     },
-    button: {
-      primary: {
-        main: "#3C50E0",
-      },
-    },
   },
 });

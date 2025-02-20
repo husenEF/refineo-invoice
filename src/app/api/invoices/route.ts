@@ -7,7 +7,7 @@ import { IAddInvoice, Invoice } from "@libs/interfaces/invoice";
 const filePath = path.join(process.cwd(), "src/data/invoices.json");
 
 // Function to read data from file
-const readData = (): Invoice[] => {
+const readData = (): IAddInvoice[] => {
   if (!fs.existsSync(filePath)) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify([]), "utf-8");
@@ -21,17 +21,11 @@ const writeData = (data: Invoice[]) => {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 };
 
-// GET all invoices
-// export async function GET() {
-//   const invoices = readData();
-//   return NextResponse.json(invoices);
-// }
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const limit = searchParams.get("_end") ?? 10;
   const offset = searchParams.get("current") ?? 0;
-  const pageSize = searchParams.get("pageSize") ?? 10;
 
   const invoices = readData();
 

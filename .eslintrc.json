@@ -14,5 +14,14 @@
         "argsIgnorePattern": "^_"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.d.ts"],
+      "rules": {
+        "unused-imports/no-unused-imports": "off",
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }
