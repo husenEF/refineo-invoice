@@ -2,7 +2,6 @@
 
 import { useDelete, HttpError } from "@refinedev/core";
 import { GridColDef } from "@mui/x-data-grid";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 import {
@@ -10,9 +9,6 @@ import {
   Chip,
   Box,
   Typography,
-  FormControl,
-  InputLabel,
-  Input,
   InputAdornment,
   TextField,
   Select,
@@ -21,8 +17,8 @@ import {
 import { Delete, Edit } from "@mui/icons-material";
 import PageTitle from "@components/layouts/page-title";
 import { useDataGrid } from "@refinedev/mui";
-import { Invoice } from "@interfaces/invoice";
-import { Nullable } from "@interfaces/nullable";
+import { Invoice } from "@libs/interfaces/invoice";
+import { Nullable } from "@libs/interfaces/nullable";
 import { useMemo, useState } from "react";
 import CustomDataGrid from "@components/custom-data-grid";
 import { formatDate, formatMoney } from "@helpers/string";
@@ -114,7 +110,7 @@ export default function InvoiceList() {
   }, [handleDelete]);
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ minHeight: 400, width: "100%" }}>
       <PageTitle title="List Invoice">
         <Box display="flex" gap={2}>
           {/* Search Input */}

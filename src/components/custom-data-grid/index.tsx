@@ -1,4 +1,4 @@
-import { IDataGridProps } from "@interfaces/custom-data-grid";
+import { IDataGridProps } from "@libs/interfaces/custom-data-grid";
 import { styled } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 

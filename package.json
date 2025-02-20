@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prepare": "husky",
+    "prepare": "husky && husky install",
     "refine": "refine",
     "start": "refine start"
   },
@@ -23,7 +23,6 @@
     "@mui/lab": "^6.0.0-beta.14",
     "@mui/material": "^6.1.7",
     "@mui/x-data-grid": "^7.22.2",
-    "@next/font": "^14.2.15",
     "@refinedev/cli": "^2.16.21",
     "@refinedev/core": "^4.47.1",
     "@refinedev/devtools": "^1.1.32",
@@ -51,12 +50,19 @@
     "eslint-config-next": "^14.2.24",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
-    "husky": "^9.1.7",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^8.0.0",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.1",
     "typescript": "^5.4.2"
   },
   "refine": {
     "projectId": "yCjRPY-ombq3E-ofvSpx"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

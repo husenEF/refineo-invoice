@@ -1,4 +1,4 @@
-import { ITypography } from "@interfaces/theme";
+import { ITypography } from "@libs/interfaces/theme";
 import { createTheme } from "@mui/material/styles";
 import { Passion_One, Open_Sans } from "next/font/google";
 import { RefineThemes } from "@refinedev/mui";
@@ -65,6 +65,11 @@ export const lightTheme: any = createTheme({
     background: {
       default: "#F1F5F9",
       paper: "#ffffff",
+    },
+    button: {
+      primary: {
+        main: "#3C50E0",
+      },
     },
   },
 });

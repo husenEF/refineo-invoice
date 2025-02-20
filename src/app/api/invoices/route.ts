@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { Invoice } from "@interfaces/invoice";
+import { IAddInvoice, Invoice } from "@libs/interfaces/invoice";
 
 // Path to the invoices JSON file
 const filePath = path.join(process.cwd(), "src/data/invoices.json");
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
   const invoices = readData();
   const { name, dueDate, amount, status } = await req.json();
 
-  const newInvoice: Invoice = {
+  const newInvoice: IAddInvoice = {
     id: invoices.length + 1,
     name,
     number: `INV00${invoices.length + 1}`, // Auto-generate invoice number
