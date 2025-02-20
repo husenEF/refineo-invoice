@@ -6,14 +6,15 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "refine build",
+    "build": "prisma generate && refine build",
     "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
     "format": "prettier --write .",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prepare": "husky && husky install",
     "refine": "refine",
-    "start": "refine start"
+    "start": "refine start",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
