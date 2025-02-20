@@ -38,6 +38,7 @@ export const darkTheme: any = createTheme({
     text: {
       primary: "#1C2434",
       secondary: "#a6b0c3",
+      disabled: "#64748B",
     },
   },
   components: {

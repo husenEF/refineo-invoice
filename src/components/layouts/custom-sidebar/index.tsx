@@ -36,7 +36,12 @@ export const CustomSidebar = () => {
         <LogoIcon />
         <Typography
           variant="h6"
-          sx={{ color: "white", textAlign: "center", width: "100%", fontFamily: "Passion One" }}
+          sx={{
+            color: "white",
+            textAlign: "center",
+            width: "100%",
+          }}
+          weight={700}
         >
           InvoiceHub
         </Typography>
