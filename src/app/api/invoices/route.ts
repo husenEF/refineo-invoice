@@ -22,9 +22,37 @@ const writeData = (data: Invoice[]) => {
 };
 
 // GET all invoices
-export async function GET() {
+// export async function GET() {
+//   const invoices = readData();
+//   return NextResponse.json(invoices);
+// }
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+
+  const limit = searchParams.get("_end") ?? 10;
+  const offset = searchParams.get("current") ?? 0;
+  const pageSize = searchParams.get("pageSize") ?? 10;
+
   const invoices = readData();
-  return NextResponse.json(invoices);
+
+  const paginatedInvoices = invoices.slice(Number(offset), Number(offset) + Number(limit));
+
+  const link = request.headers.get("host") ?? "localhost:3000";
+
+  return NextResponse.json(paginatedInvoices, {
+    headers: {
+      "Content-Range": `${Number(offset)}-${Number(offset) + paginatedInvoices.length}/${invoices.length}`,
+      "X-Total-Count": invoices.length.toString(),
+      link: [
+        `<http://${link}/api/invoices?_limit=${limit}&_start=${
+          Number(offset) - Number(limit)
+        }>; rel="prev"`,
+        `<http://${link}/api/invoices?_limit=${limit}&_start=${
+          Number(offset) + Number(limit)
+        }>; rel="next"`,
+      ].join(", "),
+    },
+  });
 }
 
 // POST: Add a new invoice

@@ -6,6 +6,7 @@ export interface CustomTheme {
   //   danger: string;
   // };
 }
+export interface ITypography extends import("@refinedev/mui").Typography {}
 
 declare module "@refinedev/mui" {
   interface Theme extends import("@refinedev/mui").Theme, CustomTheme {}

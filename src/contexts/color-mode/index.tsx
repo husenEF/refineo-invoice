@@ -7,6 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { RefineThemes } from "@refinedev/mui";
 import Cookies from "js-cookie";
 import React, { type PropsWithChildren, createContext, useEffect, useState } from "react";
+import { darkTheme, lightTheme } from "@theme";
 
 type ColorModeContextType = {
   mode: string;
@@ -54,7 +55,8 @@ export const ColorModeContextProvider: React.FC<
     >
       <ThemeProvider
         // you can change the theme colors here. example: mode === "light" ? RefineThemes.Magenta : RefineThemes.MagentaDark
-        theme={mode === "light" ? RefineThemes.Blue : RefineThemes.BlueDark}
+        // theme={mode === "light" ? lightTheme : darkTheme}
+        theme={lightTheme}
       >
         <CssBaseline />
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
