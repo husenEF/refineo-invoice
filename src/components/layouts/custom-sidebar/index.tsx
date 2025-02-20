@@ -5,12 +5,13 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Divider,
   Typography,
 } from "@mui/material";
-import { Dashboard, Receipt } from "@mui/icons-material";
+import { PostAdd, FormatListBulleted } from "@mui/icons-material";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
+import LogoIcon from "@components/icons/logo-icon";
+import { ThemedTitleV2 } from "@refinedev/mui";
 
 const drawerWidth = 240;
 
@@ -32,25 +33,30 @@ export const CustomSidebar = () => {
       }}
     >
       <Toolbar>
-        <Typography variant="h6" sx={{ color: "white", textAlign: "center", width: "100%" }}>
+        <LogoIcon />
+        <Typography
+          variant="h6"
+          sx={{ color: "white", textAlign: "center", width: "100%", fontFamily: "Passion One" }}
+        >
           InvoiceHub
         </Typography>
       </Toolbar>
-      <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.2)" }} />
-
       <List>
         <ListItem component={Link} href="/invoices/list" passHref>
           <ListItemIcon>
-            <Dashboard sx={{ color: theme.palette.text.primary }} />
+            <FormatListBulleted sx={{ color: theme.palette.primary.contrastText }} />
           </ListItemIcon>
-          <ListItemText primary="My Invoices" />
+          <ListItemText
+            primary="My Invoices"
+            sx={{ color: theme.palette.primary.contrastText, fontFamily: "Open Sans" }}
+          />
         </ListItem>
 
         <ListItem component={Link} href="/invoices/add" passHref>
           <ListItemIcon>
-            <Receipt sx={{ color: theme.palette.text.primary }} />
+            <PostAdd sx={{ color: theme.palette.primary.contrastText }} />
           </ListItemIcon>
-          <ListItemText primary="Add Invoice" />
+          <ListItemText primary="Add Invoice" sx={{ color: theme.palette.primary.contrastText }} />
         </ListItem>
       </List>
     </Drawer>
